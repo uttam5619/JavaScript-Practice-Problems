@@ -1,125 +1,128 @@
 /*
-
-function deno(){
-    let x=10;
-    function test(){
-        console.log(x);
-    }
-    return test
-}
-
-const fn =deno
-fn()()
-*/
-
-/*
-for (let i = 0; i < 3; i++) {
-  setTimeout(() => console.log(i), 100);
-}
-
-*/
-
-/*
-console.log(`-----------------`);
-for (var i = 1; i <= 3; i++) {
-  (function (let j=0) {
-    setTimeout(() => console.log(j), 100);
-  })(j);
-}
-*/
-
-
-/*
-function createFunctions() {
-  var arr = [];
-  for (var i = 0; i < 3; i++) {
-    arr.push(function () {
-      console.log(i);
-    });
+const obj = {
+  name: 'John',
+  greet: function() {
+    console.log(this.name);
   }
-  return arr;
-}
-const funcs = createFunctions();
-funcs[0]();
-funcs[1]();
-funcs[2]();
+};
+
+const greetFunc = obj.greet;
+greetFunc();
 */
 
 
 /*
-function createFunctions() {
-  let arr = [];
-  for (let i = 0; i < 3; i++) {
-    arr.push(() => console.log(i));
+const obj = {
+  value: 42,
+  getValue: function() {
+    return function() {
+      return this.value;
+    };
   }
-  return arr;
+};
+
+const func = obj.getValue();
+console.log(func());
+*/
+
+
+/*
+const obj = {
+  value: 42,
+  getValue: function() {
+    const inner = () => {
+      return this.value;
+    };
+    return inner;
+  }
+};
+
+const func = obj.getValue();
+console.log(func());
+*/
+
+
+/*
+function Person(name) {
+  this.name = name;
+  
+  setTimeout(function() {
+    console.log(this.name);
+  }, 100);
 }
-const funcs = createFunctions();
-funcs[2]();
+
+const person = new Person('Alice');
+*/
 
 
-let x = 10;
-function outer() {
-  return function inner() {
-    console.log(x);
+/*
+// to be viewed
+function foo() {
+  console.log(this);
+}
+
+const objT = {
+  foo: foo.bind(null)
+};
+
+objT.foo();
+*/
+
+
+/*
+const mod = {
+  x: 42,
+  getX: function() {
+    return this.x;
+  }
+};
+
+const unboundGetX = mod.getX;
+console.log(unboundGetX());
+
+const boundGetX = unboundGetX.bind(mod);
+console.log(boundGetX());
+*/
+
+
+/*
+const obj = {
+  name: 'Object',
+  print: () => {
+    console.log(this.name);
+  }
+};
+
+obj.print();
+*/
+
+
+/*
+// to be viewed again
+function foo() {
+  return () => {
+    return () => {
+      console.log(this.name);
+    };
   };
 }
-x = 30;
-outer()();
 
-
-function outer() {
-  let x = 10;
-  return function inner(y) {
-    console.log(x + y);
-  };
-}
-const fn = outer();
-fn(5);
-
+const obj = { name: 'Nested' };
+const firstArrow = foo.call(obj);
+const secondArrow = firstArrow();
+secondArrow();
 */
-
 
 /*
-function outer() {
-  let a = 1;
-  return function () {
-    let a = 2;
-    console.log(a);
-  };
-}
-outer()();
-
-
-
-function outer() {
-  let x = 5;
-  setTimeout(function () {
-    console.log(x);
-  }, 1000);
-}
-outer();
-*/
-
-
-/*
-function outer() {
-  for (var i = 0; i < 3; i++) {
-    setTimeout(function () {
-      console.log(i);
-    }, i * 1000);
+const obj = {
+  name: 'Original',
+  logName: function() {
+    console.log(this.name);
   }
-}
-outer();
+};
+
+const obj2 = { name: 'Changed' };
+
+setTimeout(obj.logName, 1000);
+setTimeout(obj.logName.bind(obj2), 2000);
 */
-
-function outer() {
-  for (let i = 0; i < 3; i++) {
-    setTimeout(() => console.log(i), i * 100);
-  }
-}
-outer();
-
-
-
-
