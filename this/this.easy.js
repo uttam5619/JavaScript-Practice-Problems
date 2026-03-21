@@ -8,6 +8,7 @@ const obj = {
 
 const greetFunc = obj.greet;
 greetFunc();
+//Output: - undefined
 */
 
 
@@ -23,6 +24,7 @@ const obj = {
 
 const func = obj.getValue();
 console.log(func());
+//Output:- undefined
 */
 
 
@@ -39,6 +41,7 @@ const obj = {
 
 const func = obj.getValue();
 console.log(func());
+//Output:- 42
 */
 
 
@@ -52,6 +55,9 @@ function Person(name) {
 }
 
 const person = new Person('Alice');
+console.log(person)
+//Output:- {name:'Alice'}
+undefined
 */
 
 
@@ -82,6 +88,7 @@ console.log(unboundGetX());
 
 const boundGetX = unboundGetX.bind(mod);
 console.log(boundGetX());
+//Output:- undefined, 42
 */
 
 
@@ -94,6 +101,7 @@ const obj = {
 };
 
 obj.print();
+//Output:- undefined
 */
 
 

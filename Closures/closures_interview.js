@@ -14,9 +14,7 @@ outer(10)();
 
 /*
 Output : 10 and 30
-this output is wrong x is in the temporal ddead zone.
-function will not try to find the value of x using lexical
-scope because x is already in the scope of the function.
+this output is wrong x is in the temporal dead zone.
 */
 
 

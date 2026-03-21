@@ -146,3 +146,15 @@ console.log(foo());
 
 console.log(typeof foo);
 */
+
+/*
+function outer(y) {
+    return function (x = y) {
+      console.log(x)
+      let x = 20;
+      console.log(x+y);
+    };
+}  
+outer(10)();
+*/
+  
