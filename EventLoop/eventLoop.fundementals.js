@@ -112,11 +112,11 @@ console.log("end");
 //Output:- end promise1 promise2 timeout
 */
 
-
+/*
 function loop() {
-    Promise.resolve().then(loop);
+  Promise.resolve().then(loop);
 }
 loop();  
 setTimeout(() => console.log("timeout"), 0);
-
 console.log('hello')
+*/
