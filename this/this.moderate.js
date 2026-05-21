@@ -9,7 +9,7 @@ const obj = {
     }
 };
 console.log(obj.b.func());
-//Output: - 1
+//Output: - 2
 // Here . the func function is called by obj.b oject , so in the ececution context of func 
 // the value of this will be obj.
 */

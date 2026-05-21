@@ -148,7 +148,6 @@ function outer(x) {
     console.log(y);
   };
 }
-
 outer(10)();
 
 
